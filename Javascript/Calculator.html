@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Calculator</title>
+	<style type="text/css">
+		body
+		{
+			background-color: #9f9e9e;
+		}
+		#maindiv
+		{
+			height: 400px;
+		    width:40%;
+		    background-color: white;
+		    margin-left: 30%;
+		    margin-top: 5%;
+		    border-style: groove;
+		    border-color: #dfbebe;
+		    padding: 25px;
+}
+		}	
+		#calcdiv
+		{
+			height:350px;
+			width:550px;
+			/*background-color: gray;*/
+		    margin-left: 25px;
+		    margin-top: 25px;
+		    padding-top:30px;
+		}
+		td
+		{
+			font-size: large;
+			height:40px;
+			width:180px;
+		}
+		button
+		{
+			margin-left: -92px;
+		    background: #aeb9b5;
+		    border-style: groove;
+		    border-color: #eaf1f1;
+		    font-size: larger;
+		}
+	</style>
+</head>
+<body>	
+<div id="maindiv">
+	<div id="calcdiv">	
+		<h2>Simple Arithemetic Calculator</h2>
+		<table>			
+			<tr><td>Enter First Number</td><td><input type="text" name="first" id="fst"></td></tr>
+			<tr><td>Enter Second Number</td><td><input type="text" name="Second" id="snd"></td></tr>
+			<tr><td>Choose Operator</td><td>
+				<select id="tasks">
+					<option value="default">--select--</option>
+					<option value="add">+</option>
+					<option value="substract">-</option>
+					<option value="multiply">*</option>
+					<option value="divide">/</option>
+				</select>
+			</td><td><button onclick=calculate()>=</button></td></tr>
+			<tr><td>Result</td><td><input type="text" name="result" id="result" readonly=""></td></tr>
+		</table>
+	</div>
+</div>
+<script>	
+	function calculate()
+	{
+	var firstNumber,secondNumber;
+	firstNumber = parseFloat(document.getElementById("fst").value);	
+	var secondNumber = parseFloat(document.getElementById("snd").value);
+	var result;
+	var task = document.getElementById("tasks").value;	
+	if(task == "add")
+	{
+		addNumbers(firstNumber,secondNumber);
+	}
+	else if(task == "substract")
+	{
+		substractNumbers(firstNumber,secondNumber)
+	}
+	else if(task == "multiply")
+	{
+		multiplyNumbers(firstNumber,secondNumber)
+	}
+	else if(task == "divide")
+	{
+		divideNumbers(firstNumber,secondNumber)
+	}
+	else
+	{
+		window.alert("Please select an operator..");
+		document.getElementById("result").value = "";
+	}
+	}
+	function addNumbers(n1,n2)
+	{		
+		result =  n1 + n2;
+		print(result);
+	}
+	function substractNumbers(n1,n2)
+	{
+		result =  n1 - n2;
+		print(result);
+	}
+	function multiplyNumbers(n1,n2)
+	{
+		result =  n1 * n2;
+		print(result);
+	}
+	function divideNumbers(n1,n2)
+	{
+		result =  n1 / n2;
+		print(result);
+	}
+	function print(result)
+	{
+		document.getElementById("result").value = result;
+	}
+</script>
+</body>
+</html>

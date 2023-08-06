@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lottery Ticket Winner</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+	<style type="text/css">
+		body
+		{
+			background-color: grey;
+		}
+		#mainbox
+		{
+			height: 400px;
+		    width: 50%;
+		    background-color: white;
+		    margin-left: 25%;
+		    margin-top: 10%;
+		}
+		label
+		{
+			margin-left:25px;
+			margin-top:25px;
+			height:250px;
+			width:150px;
+			border-style: double;
+			border-top:25px;
+		}
+		ul
+		{
+			list-style-type: none;
+			display: flex;
+			grid-gap: 30px;	
+  		
+
+		}
+		li
+		{
+			height: 25px;
+			width: 50px;
+			border-style:none;
+			background-color: white;
+			font-size: 30px;
+		}
+		button
+		{
+			margin-left: 280px;
+		    margin-top: 80px;
+		    height: 50px;
+		    width: 100px;
+		    border-style: groove;
+		    text-align: center;
+		    font-size: larger;
+		    font-style: oblique;
+		    color: #dce7dc;
+		    background-color: #1c382f;
+		}
+		#list
+		{
+			padding-top:65px;
+		}
+		h2
+		{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+<div id="mainbox">
+<h2>Lottery Draw</h2>
+<div id="box">
+	<p id="list"></p>
+	<button onclick="selectWinner()">Winner</button>
+</div>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" id="content">
+          <!-- Modal body.. -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+  </div>
+<script type="text/javascript">
+	var index;
+	var lotteryList = [527,728,152,898,943,488,652,216];	
+	var lst = "<ul>";	
+	for(var i=0;i<lotteryList.length;i++){
+		lst+= "<li "+"value="+lotteryList[i]+">"+lotteryList[i]+"</li>"+"	";
+	}
+	lst+="</ul>";	
+	document.getElementById("list").innerHTML = lst;
+	function selectWinner(){
+			
+		var winner = lotteryList[Math.floor(Math.random() * lotteryList.length)];
+		index = lotteryList.indexOf(winner);		
+		
+		var item = document.querySelectorAll("li");
+		
+		for(var x = 0;x < item.length;x++)
+		{
+			if(item[x].value == winner)
+			{
+				console.log("The winner is "+item[x].value);				
+				item[x].style.color = "red";
+				document.getElementById("content").innerHTML = "Lottery Winner is "+winner;				
+				new bootstrap.Modal(document.querySelector("#myModal")).show();			
+				break;
+			}
+		}	
+	}
+</script>
+</body>
+</html>
